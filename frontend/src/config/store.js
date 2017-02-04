@@ -5,11 +5,10 @@ import promiseMiddleware from 'config/promiseMiddleware';
 
 const middlewares = [applyMiddleware(promiseMiddleware)];
 
-
 const composeEnhancers = process.env.NODE_ENV === 'development' ?
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
-var initialize = (initialState = {}) => {
+var initSore = (initialState = {}) => {
 
   const store = createStore(reducer, initialState, composeEnhancers(...middlewares));
 
@@ -23,5 +22,5 @@ var initialize = (initialState = {}) => {
   return store;
 };
 
-export default initialize;
+export default initSore;
 

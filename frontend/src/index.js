@@ -15,6 +15,8 @@ import { registerLocales } from 'config/translation';
 
 const store = initStore();
 const history = syncHistoryWithStore(browserHistory, store);
+global.translate = require('counterpart');
+
 registerLocales(store);
 injectTapEventPlugin();
 
