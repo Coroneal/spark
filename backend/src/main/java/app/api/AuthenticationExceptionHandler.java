@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class AuthenticationExceptionHandler {
+
   private final Log log = LogFactory.getLog(getClass());
 
   @ExceptionHandler(AuthenticationException.class)

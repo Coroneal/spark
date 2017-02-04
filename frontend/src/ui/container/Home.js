@@ -3,9 +3,11 @@ import {Link} from "react-router";
 import {connect} from "react-redux";
 import {getSession} from "reducers/authentication";
 import RaisedButton from "material-ui/RaisedButton";
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {setLocale} from "reducers/locale";
 import {locales} from "config/translation";
+import Translate from 'react-translate-component';
 
 import "stylus/main.styl";
 
@@ -31,7 +33,7 @@ const TopMenu = (props) => {
   );
 };
 
-export class App extends Component {
+export class Home extends Component {
 
   componentDidMount() {
     this.props.getSession();
@@ -47,11 +49,19 @@ export class App extends Component {
 
     return (
       <MuiThemeProvider>
-      <div id="application">
-          <RaisedButton label="fsdfsd" primary={true}/>
+        <div>
+          <Toolbar>
+            <ToolbarGroup>
+              <ToolbarTitle text="Mesiok" />
+            </ToolbarGroup>
+            <ToolbarGroup>
+              <RaisedButton label="Zaloguj" primary={true}/>
+              <RaisedButton label="Rejestruj" primary={true} />
+            </ToolbarGroup>
+          </Toolbar>
           <TopMenu items={menuItems} currentLocale={currentLocale} setLocale={setLocale}/>
           {this.props.children}
-      </div>
+        </div>
       </MuiThemeProvider>
     );
   }
@@ -60,4 +70,4 @@ export class App extends Component {
 export default connect(
   state => ({isAuthenticated: state.authentication.isAuthenticated, currentLocale: state.locale.currentLocale}),
   {getSession, setLocale}
-)(App);
+)(Home);

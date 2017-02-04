@@ -19,12 +19,14 @@ const ErrorPanel = ({messageKey}) => (
 export default class LoginForm extends Component {
 
   render() {
+
     const {errorMessage} = this.props;
     const errorPanel = errorMessage ? <ErrorPanel messageKey={errorMessage}/> : null;
+
     return (
       <div>
-        <Translate component="h2" content="login.title" />
 
+        <Translate component="h2" content="login.title" />
         <Translate component="p" content="login.hint" />
 
         {errorPanel}

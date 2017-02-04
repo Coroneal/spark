@@ -17,4 +17,5 @@ public class EmbeddedSessionConfig {
     sessionRepositoryFilter.setHttpSessionStrategy(new HeaderHttpSessionStrategy());
     return sessionRepositoryFilter;
   }
+
 }
