@@ -1,6 +1,7 @@
 const SET_LOCALE = 'locale/SET_LOCALE';
+var translation = require('counterpart');
 
-export default function reducer(state = {}, action) {
+export default function reducer(state = {translation}, action) {
   switch (action.type) {
     case SET_LOCALE:
       return {

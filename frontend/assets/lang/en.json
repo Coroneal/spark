@@ -1,4 +1,11 @@
 {
+  "home": {
+    "topBar":{
+      "appTitle": "Spark",
+      "login": "Login",
+      "register": "Register"
+    }
+  },
   "private": {
     "title": "Private page",
     "greeting": "Hello %(name)s! How are you today?"

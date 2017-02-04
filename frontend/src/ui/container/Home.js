@@ -7,7 +7,6 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {setLocale} from "reducers/locale";
 import {locales} from "config/translation";
-import Translate from 'react-translate-component';
 
 import "stylus/main.styl";
 
@@ -52,7 +51,8 @@ export class Home extends Component {
         <div>
           <Toolbar>
             <ToolbarGroup>
-              <ToolbarTitle text="Mesiok" />
+              {/*<ToolbarTitle text={translation('home.topBar.appTitle')} />*/}
+              <ToolbarTitle text="" />
             </ToolbarGroup>
             <ToolbarGroup>
               <RaisedButton label="Zaloguj" primary={true}/>

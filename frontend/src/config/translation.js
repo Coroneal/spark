@@ -1,5 +1,6 @@
 import counterpart from 'counterpart';
 import {setLocale} from 'reducers/locale';
+
 const translations = {
   en: require('lang/en.json'),
   pl: require('lang/pl.json')

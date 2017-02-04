@@ -1,15 +1,22 @@
 {
+  "home": {
+    "topBar":{
+      "appTitle": "Spark",
+      "login": "Zaloguj",
+      "register": "Rejestruj"
+    }
+  },
   "private": {
     "title": "Strona prywatna",
-    "greeting": "Cze %(name)s! How are you today?"
+    "greeting": "Cześć %(name)s! Jak się masz?"
   },
   "login": {
     "title": "Strona logowania",
-    "hint": "Domy 'user' and 'password'",
+    "hint": "Domyślna nazwa oraz hasło to 'user' oraz 'password'",
     "error": {
-      "private": "Please login to access this page",
-      "unauthorized": "Please login to access this resource",
-      "badLogin": "Incorrect user and password"
+      "private": "Zaloguj sie aby wuswietlic ta strone",
+      "unauthorized": "Zaloguj sie aby moc wyswietloc te tresci",
+      "badLogin": "Niepoprawny login oraz haslo"
     }
   }
 }

@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import initStore from 'config/store';
 import { setupAxiosInterceptors } from 'rest/axios';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import DevTools from 'config/devtools';
 import { redirectToLoginWithMessage, logout } from 'reducers/authentication';
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -13,8 +12,6 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { Router } from 'react-router';
 import getRoutes from 'router/router';
 import { registerLocales } from 'config/translation';
-
-const devTools = process.env.NODE_ENV === 'development' ? <DevTools /> : null;
 
 const store = initStore();
 const history = syncHistoryWithStore(browserHistory, store);
@@ -27,7 +24,6 @@ setupAxiosInterceptors(() => actions.redirectToLoginWithMessage('login.error.una
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      {devTools}
       <Router history={history} routes={getRoutes(actions.logout)}/>
     </div>
   </Provider>,
