@@ -15,7 +15,6 @@ const privateRoute = (Wrapped) => connect(mapStateToProps, mapDispatchToProps)(c
 
 	componentDidMount() {
 		this.redirectIfNotLogged(this.props);
-		dsfsdfsd
 	}
 
 	componentWillReceiveProps(nextProps) {
