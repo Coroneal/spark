@@ -18,6 +18,12 @@ const ErrorPanel = ({messageKey}) => (
 
 export default class LoginForm extends Component {
 
+  handleSubmit(formData) {
+    const { username, password } = formData;
+    const { login } = this.props;
+    login(username, password);
+  }
+
   render() {
 
     const {errorMessage} = this.props;
@@ -43,9 +49,4 @@ export default class LoginForm extends Component {
     );
   }
 
-  handleSubmit(formData) {
-    const { username, password } = formData;
-    const { login } = this.props;
-    login(username, password);
-  }
 }

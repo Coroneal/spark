@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect, IndexRoute } from 'react-router';
 
-import Home from 'container/Home';
+import Home from 'container/home/Home';
 import SimpleListComponent from 'container/SimpleListComponent';
 import PrivatePage from 'container/PrivatePage';
 import LoginPage from 'container/LoginPage';

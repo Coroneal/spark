@@ -4,16 +4,12 @@ import {connect} from "react-redux";
 import {getSession} from "reducers/authentication";
 import {setLocale} from "reducers/locale";
 import {locales} from "config/translation";
+import {AppTopBar} from "component/AppTopBar";
 
-import RaisedButton from "material-ui/RaisedButton";
-import IconButton from "material-ui/IconButton";
-import IconMenu from 'material-ui/IconMenu';
-import Language from "material-ui/svg-icons/action/language";
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MenuItem from 'material-ui/MenuItem';
 
 import "stylus/main.styl";
+
 
 const TopMenu = (props) => {
   const items = props.items.map((item, key) => (
@@ -44,30 +40,10 @@ export class Home extends Component {
       {label: 'Private page', link: '/private'}
     ];
 
-
-    var LocaleSwitcher = ({currentLocale, onLocaleChange}) => {
-      const localesItems = locales.map(lang => <MenuItem key={lang} value={lang} primaryText={translate(`languages.${lang}`)}/>);
-      return (
-        <IconMenu iconButtonElement={<IconButton><Language/></IconButton>}
-                onChange={(event, value) => onLocaleChange(value)} value={currentLocale}>
-          {localesItems}
-        </IconMenu>
-      );
-    };
-
     return (
       <MuiThemeProvider>
         <div>
-          <Toolbar>
-            <ToolbarGroup>
-              <ToolbarTitle text={translate('home.topBar.appTitle')}/>
-            </ToolbarGroup>
-            <ToolbarGroup>
-              <RaisedButton label={translate('home.topBar.login')} primary={true}/>
-              <RaisedButton label={translate('home.topBar.register')} primary={true}/>
-              <LocaleSwitcher currentLocale={currentLocale} onLocaleChange={setLocale} />
-            </ToolbarGroup>
-          </Toolbar>
+          <AppTopBar getSession={getSession} currentLocale={currentLocale} setLocale={setLocale} />
           <TopMenu items={menuItems}/>
           {this.props.children}
         </div>
