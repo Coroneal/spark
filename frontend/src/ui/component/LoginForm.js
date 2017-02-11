@@ -1,52 +1,38 @@
-import React, { Component } from 'react';
-import { Form, TextInput, Label } from 'react-easy-form';
-import Translate from 'react-translate-component';
-
-const LabeledInput = (props) => (
-  <div className="pure-control-group">
-    <Label value={props.label} position="before">
-      <TextInput {...props}/>
-    </Label>
-  </div>
-);
-
-const ErrorPanel = ({messageKey}) => (
-  <p className="error-panel">
-    <Translate content={messageKey} />
-  </p>
-);
+import React, {Component} from "react";
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
+import TextField from 'material-ui/TextField';
 
 export default class LoginForm extends Component {
 
-  handleSubmit(formData) {
-    const { username, password } = formData;
-    const { login } = this.props;
-    login(username, password);
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: '',
+      password: ''
+    }
   }
+
+  handleSubmit() {
+    console.log(this.state);
+  };
 
   render() {
 
-    const {errorMessage} = this.props;
-    const errorPanel = errorMessage ? <ErrorPanel messageKey={errorMessage}/> : null;
+    const submitButton = <FlatButton label={translate('home.topBar.loginForm.loginSubmit')}
+                                     primary={true} onTouchTap={() => this.handleSubmit()}/>;
 
     return (
-      <div>
+      <Dialog title={translate('home.topBar.loginForm.title')} actions={submitButton} modal={false} open={this.props.isOpen}
+              onRequestClose={() => this.props.onClose()} autoScrollBodyContent={true}>
 
-        <Translate component="h2" content="login.title" />
-        <Translate component="p" content="login.hint" />
-
-        {errorPanel}
-
-        <Form ref="form" initialData={{}} onSubmit={(formData) => this.handleSubmit(formData)} className="pure-form pure-form-aligned">
-          <LabeledInput label="Login" name="username"/>
-          <LabeledInput label="Password" name="password" type="password"/>
-
-          <div className="pure-controls">
-            <button type="submit" className="pure-button pure-button-primary">Login</button>
-          </div>
-        </Form>
-      </div>
+        <TextField floatingLabelText={translate('home.topBar.loginForm.login')}
+                   onChange={(e, newValue) => this.setState({login: newValue})}/>
+        <br />
+        <br />
+        <TextField floatingLabelText={translate('home.topBar.loginForm.password')}
+                   onChange={(e, newValue) => this.setState({password: newValue})}/>
+      </Dialog>
     );
   }
-
 }

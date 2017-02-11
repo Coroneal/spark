@@ -1,13 +1,19 @@
 {
-  "languages":{
+  "languages": {
     "pl": "Polski",
     "en": "English"
   },
   "home": {
-    "topBar":{
+    "topBar": {
       "appTitle": "Spark",
       "login": "Zaloguj",
-      "register": "Rejestruj"
+      "register": "Rejestruj",
+      "loginForm": {
+        "title": "Logowanie",
+        "login": "Login",
+        "password": "Hasło",
+        "loginSubmit": "Zaloguj"
+      }
     }
   },
   "private": {
