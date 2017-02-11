@@ -5,11 +5,19 @@ import {getSession} from "reducers/authentication";
 import {setLocale} from "reducers/locale";
 import {locales} from "config/translation";
 import {AppTopBar} from "component/AppTopBar";
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import {cyan500} from "material-ui/styles/colors";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
 import "stylus/main.styl";
 
+
+const muiTheme = getMuiTheme({
+  baseTheme: {
+    button:{
+      minWidth: 44
+    }
+  }
+});
 
 const TopMenu = (props) => {
   const items = props.items.map((item, key) => (
@@ -33,7 +41,9 @@ export class Home extends Component {
   }
 
   render() {
+    console.log(getMuiTheme());
     const {currentLocale, setLocale} = this.props;
+
     const menuItems = [
       {label: 'Home', link: '/'},
       this.props.isAuthenticated ? {label: 'Logout', link: '/logout'} : {label: 'Login', link: '/login'},
@@ -41,9 +51,9 @@ export class Home extends Component {
     ];
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppTopBar getSession={getSession} currentLocale={currentLocale} setLocale={setLocale} />
+          <AppTopBar getSession={getSession} currentLocale={currentLocale} setLocale={setLocale}/>
           <TopMenu items={menuItems}/>
           {this.props.children}
         </div>
