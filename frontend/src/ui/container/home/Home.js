@@ -12,11 +12,9 @@ import "stylus/main.styl";
 
 
 const muiTheme = getMuiTheme({
-  baseTheme: {
-    button:{
-      minWidth: 44
+    appBar: {
+      height: 64,
     }
-  }
 });
 
 const TopMenu = (props) => {
@@ -60,7 +58,7 @@ export class Home extends Component {
       </MuiThemeProvider>
     );
   }
-}
+};
 
 export default connect(
   state => ({isAuthenticated: state.authentication.isAuthenticated, currentLocale: state.locale.currentLocale}),

@@ -7,20 +7,18 @@ import LoginForm from "component/LoginForm";
 import RaisedButton from "material-ui/RaisedButton";
 import IconButton from "material-ui/IconButton";
 import AppBar from "material-ui/AppBar";
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconMenu from "material-ui/IconMenu";
-import Language from "material-ui/svg-icons/action/language";
 import MapsDirectionsCar from "material-ui/svg-icons/maps/directions-car";
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from "material-ui/Toolbar";
 import MenuItem from "material-ui/MenuItem";
-import "stylus/home/home.styl";
+import "stylus/container/home/home.styl";
 
 
 export class AppTopBar extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoginFormOpen: false }
+    this.state = {isLoginFormOpen: false}
   }
 
   componentDidMount() {
@@ -28,11 +26,11 @@ export class AppTopBar extends Component {
   }
 
   openLoginForm() {
-    this.setState({ isLoginFormOpen: true })
+    this.setState({isLoginFormOpen: true})
   }
 
   onCloseLoginForm() {
-    this.setState({ isLoginFormOpen: false })
+    this.setState({isLoginFormOpen: false})
   }
 
   render() {
@@ -42,7 +40,8 @@ export class AppTopBar extends Component {
     const RightSection = ({currentLocale}) => {
       return (
         <div className="app-bar-buttons-group">
-          <RaisedButton label={translate('home.topBar.login')} onTouchTap={() => this.openLoginForm()} secondary={true}/>
+          <RaisedButton label={translate('home.topBar.login')} onTouchTap={() => this.openLoginForm()}
+                        secondary={true}/>
           <RaisedButton label={translate('home.topBar.register')} secondary={true}/>
           <LocaleSwitcher currentLocale={currentLocale} onLocaleChange={setLocale}/>
           <LoginForm isOpen={this.state.isLoginFormOpen} onClose={() => this.onCloseLoginForm()}/>

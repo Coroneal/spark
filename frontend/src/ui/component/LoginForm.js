@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
-import AppBar from "material-ui/AppBar";
+import RaisedButton from "material-ui/RaisedButton";
 import TextField from 'material-ui/TextField';
 import muiThemeable from 'material-ui/styles/muiThemeable';
+
+import "stylus/component/login-form.styl";
 
 export default muiThemeable()(class LoginForm extends Component {
 
@@ -22,19 +23,20 @@ export default muiThemeable()(class LoginForm extends Component {
 
   render() {
 
-    const submitButton = <FlatButton label={translate('home.topBar.loginForm.loginSubmit')} keyboardFocused={true}
+    const submitButton = <RaisedButton fullWidth={true} label={translate('home.topBar.loginForm.loginSubmit')} keyboardFocused={true}
                                      primary={true} onTouchTap={() => this.handleSubmit()}/>;
 
     return (
-      <Dialog title={<AppBar title={<span>{translate('home.topBar.loginForm.title')}</span>}/>} actions={submitButton} modal={false} open={this.props.isOpen}
-              onRequestClose={() => this.props.onClose()} autoScrollBodyContent={true}
-              titleStyle={{backgroundColor: this.props.muiTheme.palette.pickerHeaderColor}}>
+      <Dialog title={translate('home.topBar.loginForm.title')} actions={submitButton} modal={false} open={this.props.isOpen}
+              onRequestClose={() => this.props.onClose()} autoScrollBodyContent={true} contentClassName="login-dialog"
+    /*{titleStyle={{backgroundColor: this.props.muiTheme.palette.pickerHeaderColor}}}*/
+      >
 
-        <TextField floatingLabelText={translate('home.topBar.loginForm.login')}
+        <TextField floatingLabelText={translate('home.topBar.loginForm.login')} fullWidth={true}
                    onChange={(e, newValue) => this.setState({login: newValue})}/>
         <br />
         <br />
-        <TextField floatingLabelText={translate('home.topBar.loginForm.password')}
+        <TextField floatingLabelText={translate('home.topBar.loginForm.password')} fullWidth={true}
                    onChange={(e, newValue) => this.setState({password: newValue})}/>
       </Dialog>
     );
