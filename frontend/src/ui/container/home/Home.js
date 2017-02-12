@@ -39,8 +39,8 @@ export class Home extends Component {
   }
 
   render() {
-    console.log(getMuiTheme());
-    const {currentLocale, setLocale} = this.props;
+
+    const {currentLocale, setLocale, isAuthenticated, userName} = this.props;
 
     const menuItems = [
       {label: 'Home', link: '/'},
@@ -52,7 +52,8 @@ export class Home extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppTopBar getSession={getSession} currentLocale={currentLocale} setLocale={setLocale}/>
+          <AppTopBar userName={userName} isAuthenticated={isAuthenticated}
+                     getSession={getSession} currentLocale={currentLocale} setLocale={setLocale}/>
           <TopMenu items={menuItems}/>
           {this.props.children}
         </div>
@@ -62,6 +63,10 @@ export class Home extends Component {
 };
 
 export default connect(
-  state => ({isAuthenticated: state.authentication.isAuthenticated, currentLocale: state.locale.currentLocale}),
+  state => ({
+    isAuthenticated: state.authentication.isAuthenticated,
+    userName: state.authentication.username,
+    currentLocale: state.locale.currentLocale,
+  }),
   {getSession, setLocale}
 )(Home);

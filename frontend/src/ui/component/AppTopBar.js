@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {getSession} from "reducers/authentication";
 import {setLocale} from "reducers/locale";
 import {locales} from "config/translation";
-import LoginForm from "component/LoginForm";
 import { browserHistory } from 'react-router';
 import RaisedButton from "material-ui/RaisedButton";
 import IconButton from "material-ui/IconButton";
@@ -27,37 +26,31 @@ export class AppTopBar extends Component {
   }
 
   openLoginForm() {
-    // this.setState({isLoginFormOpen: true})
     browserHistory.push('/authentication');
-  }
-
-  onCloseLoginForm() {
-    this.setState({isLoginFormOpen: false})
   }
 
   render() {
 
     const {currentLocale, setLocale} = this.props;
 
-    const RightSection = ({currentLocale}) => {
+    const RightSection = () => {
       return (
         <div className="app-bar-buttons-group">
           <RaisedButton label={translate('home.topBar.login')} onTouchTap={() => this.openLoginForm()}
                         secondary={true}/>
           <RaisedButton label={translate('home.topBar.register')} secondary={true}/>
-          <LocaleSwitcher currentLocale={currentLocale} onLocaleChange={setLocale}/>
-          {/*<LoginForm isOpen={this.state.isLoginFormOpen} onClose={() => this.onCloseLoginForm()}/>*/}
+          <LocaleSwitcher/>
         </div>
       );
     };
 
-    const LocaleSwitcher = ({currentLocale, onLocaleChange}) => {
+    const LocaleSwitcher = () => {
 
       const localesItems = locales.map(lang => <MenuItem key={lang} value={lang}
                                                          primaryText={translate(`languages.${lang}`)}/>);
       return (
         <IconMenu iconButtonElement={<RaisedButton primary={true} label={currentLocale}></RaisedButton>}
-                  onChange={(e, value) => onLocaleChange(value)} value={currentLocale}>
+                  onChange={(e, value) => setLocale(value)} value={currentLocale}>
           {localesItems}
         </IconMenu>
       );
@@ -67,7 +60,7 @@ export class AppTopBar extends Component {
       <AppBar
         title={<span>{translate('home.topBar.appTitle')}</span>}
         iconElementLeft={<IconButton><MapsDirectionsCar /></IconButton>}
-        iconElementRight={<RightSection currentLocale={currentLocale}/>}
+        iconElementRight={<RightSection/>}
       />
     );
   }
