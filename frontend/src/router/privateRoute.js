@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {redirectToLoginWithMessage} from "reducers/authentication";
 import {connect} from "react-redux";
 
@@ -11,7 +11,7 @@ const mapDispatchToProps = {
 	redirectToLoginWithMessage
 };
 
-const privateRoute = (Wrapped) => connect(mapStateToProps, mapDispatchToProps)(class extends React.Component {
+const privateRoute = (Wrapped) => connect(mapStateToProps, mapDispatchToProps)(class extends Component {
 
 	componentDidMount() {
 		this.redirectIfNotLogged(this.props);

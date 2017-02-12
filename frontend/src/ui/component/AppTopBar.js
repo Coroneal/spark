@@ -4,6 +4,7 @@ import {getSession} from "reducers/authentication";
 import {setLocale} from "reducers/locale";
 import {locales} from "config/translation";
 import LoginForm from "component/LoginForm";
+import { browserHistory } from 'react-router';
 import RaisedButton from "material-ui/RaisedButton";
 import IconButton from "material-ui/IconButton";
 import AppBar from "material-ui/AppBar";
@@ -26,7 +27,8 @@ export class AppTopBar extends Component {
   }
 
   openLoginForm() {
-    this.setState({isLoginFormOpen: true})
+    // this.setState({isLoginFormOpen: true})
+    browserHistory.push('/authentication');
   }
 
   onCloseLoginForm() {
@@ -44,7 +46,7 @@ export class AppTopBar extends Component {
                         secondary={true}/>
           <RaisedButton label={translate('home.topBar.register')} secondary={true}/>
           <LocaleSwitcher currentLocale={currentLocale} onLocaleChange={setLocale}/>
-          <LoginForm isOpen={this.state.isLoginFormOpen} onClose={() => this.onCloseLoginForm()}/>
+          {/*<LoginForm isOpen={this.state.isLoginFormOpen} onClose={() => this.onCloseLoginForm()}/>*/}
         </div>
       );
     };
