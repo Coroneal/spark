@@ -13,7 +13,7 @@ export default class LoginForm extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      userName: '',
+      userName: props.username,
       password: ''
     }
   }
@@ -40,10 +40,8 @@ export default class LoginForm extends Component {
     /*{titleStyle={{backgroundColor: this.props.muiTheme.palette.pickerHeaderColor}}}*/
       >
 
-        <TextField floatingLabelText={translate('home.topBar.loginForm.login')} fullWidth={true}
+        <TextField floatingLabelText={translate('home.topBar.loginForm.login')} defaultValue={this.state.userName} fullWidth={true}
                    onChange={(e, newValue) => this.setState({userName: newValue})}/>
-        <br />
-        <br />
         <TextField floatingLabelText={translate('home.topBar.loginForm.password')} fullWidth={true}
                    onChange={(e, newValue) => this.setState({password: newValue})}/>
       </Dialog>

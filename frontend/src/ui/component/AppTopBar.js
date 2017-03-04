@@ -18,7 +18,10 @@ export class AppTopBar extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {isLoginFormOpen: false}
+    this.state = {
+      isLoginFormOpen: false,
+      isRegisterFormOpen: false
+    }
   }
 
   componentDidMount() {
@@ -29,16 +32,21 @@ export class AppTopBar extends Component {
     browserHistory.push('/authentication');
   }
 
+  openRegisterForm() {
+    browserHistory.push('/registration');
+  }
+
   render() {
 
-    const {currentLocale, setLocale} = this.props;
+    const {currentLocale, setLocale, isAuthenticated, userName} = this.props;
 
     const RightSection = () => {
       return (
         <div className="app-bar-buttons-group">
           <RaisedButton label={translate('home.topBar.login')} onTouchTap={() => this.openLoginForm()}
                         secondary={true}/>
-          <RaisedButton label={translate('home.topBar.register')} secondary={true}/>
+          <RaisedButton label={translate('home.topBar.register')} onTouchTap={() => this.openRegisterForm()}
+                        secondary={true}/>
           <LocaleSwitcher/>
         </div>
       );

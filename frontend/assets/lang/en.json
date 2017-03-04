@@ -13,6 +13,14 @@
         "login": "Login",
         "password": "Password",
         "loginSubmit": "Sign in"
+      },
+      "registerForm": {
+        "title": "Registration",
+        "login": "Login",
+        "email": "Email address",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "registerSubmit": "Register"
       }
     }
   },

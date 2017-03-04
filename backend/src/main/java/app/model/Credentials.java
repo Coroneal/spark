@@ -3,6 +3,7 @@ package app.model;
 public class Credentials {
 
   private String username;
+  private String email;
   private String password;
 
   public Credentials() {
@@ -15,4 +16,9 @@ public class Credentials {
   public String getPassword() {
     return password;
   }
+
+  public String getEmail() {
+    return email;
+  }
+
 }
